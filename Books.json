@@ -2,6 +2,13 @@
   "Harry potter": {
     "title": "The chamber",
     "author": "J.k rolling",
-    "year": 2001
+    "year": 2001,
+    "available": true
+  },
+  "ABC123": {
+    "title": "Python Programming",
+    "author": "John Doe",
+    "year": 2022,
+    "available": true
   }
 }
