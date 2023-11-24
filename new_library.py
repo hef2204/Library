@@ -82,6 +82,8 @@ my_library.add_customer(1, 'boris', 28, 'peer 78, haifa', 'bbb@com')
 my_library.save_customer()
 my_library.load_customers()
 
+
+
     
 
 
