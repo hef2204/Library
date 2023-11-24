@@ -44,13 +44,12 @@ class Customer:
         print(f"Ordered Books: {[book.title for book in self.ordered_books]}")
 
 class Library:
-    def __init__(self, name, address, state_file="library_state.json"):
+    def __init__(self, name, address):
         self.name = name
         self.address = address
         self.books = []
         self.customers = []
         self.load_books_from_file("books.txt")
-        self.load_state(state_file)
         
 
     def add_book(self, title, author, genre, language, year):
@@ -118,13 +117,7 @@ class Library:
         else:
             print(f"{customer.full_name} has already ordered book '{title}'.")
 
-    def save_state(self, library_file_path: Optional[str] = "library_state.json", customers_file_path: Optional[str] = "customers.json"):
-        try:
-            with open(library_file_path, 'r') as library_file:
-                existing_data = json.load(library_file)
-        except FileNotFoundError:
-            existing_data = {"name": self.name, "address": self.address, "books": [], "customers": []}
-
+    def save_state(self, file_path: Optional[str] = "library_state.json"):
         library_state = {
             "name": self.name,
             "address": self.address,
@@ -151,25 +144,8 @@ class Library:
             ]
         }
 
-        # Update book information
-        existing_data['books'].extend(library_state['books'])
-
-        # Update customer information or add new customers
-        existing_customer_names = {customer_data['full_name'] for customer_data in existing_data['customers']}
-        new_customer_names = {customer_data['full_name'] for customer_data in library_state['customers']}
-
-        # Add new customer names to existing data
-        existing_customer_names.update(new_customer_names)
-
-        with open(library_file_path, 'a') as library_file:
-            json.dump(existing_data, library_file, indent=2)
-
-        with open(customers_file_path, 'a') as customers_file:
-            json.dump(list(existing_customer_names), customers_file, indent=2)
-
-        
-
-
+        with open(file_path, 'w') as file:
+            json.dump(library_state, file, indent=2)
 
     def load_state(self, library_file_path: Optional[str] = "library_state.json", customer_file_path: Optional[str] = "customers.json"):
         try:
