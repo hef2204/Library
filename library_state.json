@@ -1,0 +1,121 @@
+{
+  "name": "City Library",
+  "address": "123 Main St",
+  "books": [
+    {
+      "title": "Harry Potter and the Sorcerer's Stone",
+      "author": "JK-Rowling",
+      "year": 2001,
+      "genre": "Fantasy",
+      "language": "English",
+      "available": true
+    },
+    {
+      "title": "Harry Potter and the Chamber of Secrets",
+      "author": "JK-Rowling",
+      "year": 2002,
+      "genre": "Fantasy",
+      "language": "English",
+      "available": true
+    },
+    {
+      "title": "Harry Potter and the Prisoner of Azkaban",
+      "author": "JK-Rowling",
+      "year": 2002,
+      "genre": "Fantasy",
+      "language": "English",
+      "available": true
+    },
+    {
+      "title": "Harry Potter and the Goblet of Fire",
+      "author": "JK-Rowling",
+      "year": 2002,
+      "genre": "Fantasy",
+      "language": "English",
+      "available": true
+    },
+    {
+      "title": "Harry Potter and the Order of Phoenix",
+      "author": "JK-Rowling",
+      "year": 2002,
+      "genre": "Fantasy",
+      "language": "English",
+      "available": true
+    },
+    {
+      "title": "Harry Potter and the Half-Blood Prince",
+      "author": "JK-Rowling",
+      "year": 2002,
+      "genre": "Fantasy",
+      "language": "English",
+      "available": true
+    },
+    {
+      "title": "Harry Potter and the Deathly Hallows - Part 1",
+      "author": "JK-Rowling",
+      "year": 2002,
+      "genre": "Fantasy",
+      "language": "English",
+      "available": true
+    },
+    {
+      "title": "Harry Potter and the Deathly Hallows - Part 2",
+      "author": "JK-Rowling",
+      "year": 2002,
+      "genre": "Fantasy",
+      "language": "English",
+      "available": true
+    }
+  ],
+  "customers": [
+    {
+      "full_name": "Alice Johnson",
+      "age": 30,
+      "town": "Cityville",
+      "loaned_books": [],
+      "ordered_books": []
+    },
+    {
+      "full_name": "Ofer Sadan",
+      "age": 38,
+      "town": "Haifa",
+      "loaned_books": [],
+      "ordered_books": []
+    },
+    {
+      "full_name": "Boris",
+      "age": 28,
+      "town": "Haifa",
+      "loaned_books": [],
+      "ordered_books": []
+    },
+    {
+      "full_name": "Seva",
+      "age": 27,
+      "town": "Haifa",
+      "loaned_books": [],
+      "ordered_books": []
+    },
+    {
+      "full_name": "Bibi Netanyahu",
+      "age": 72,
+      "town": "Caesarea",
+      "loaned_books": [],
+      "ordered_books": []
+    },
+    {
+      "full_name": "Liam Heifits",
+      "age": 0.5,
+      "town": "Haifa",
+      "loaned_books": [],
+      "ordered_books": []
+    },
+    {
+      "full_name": "Karina Heifits",
+      "age": 20,
+      "town": "Haifa",
+      "loaned_books": [],
+      "ordered_books": []
+    }
+  ]
+}

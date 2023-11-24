@@ -1,0 +1,9 @@
+[
+    {"full_name": "Alice Johnson", "age": 30, "town": "Cityville"},
+    {"full_name": "Ofer Sadan", "age": 38, "town": "Haifa"},
+    {"full_name": "Boris", "age": 28, "town": "Haifa"},
+    {"full_name": "Seva", "age": 27, "town": "Haifa"},
+    {"full_name": "Bibi Netanyahu", "age": 72, "town": "Caesarea"},
+    {"full_name": "Liam Heifits", "age": 0.5, "town": "Haifa"},
+    {"full_name": "Karina Heifits", "age": 20, "town": "Haifa"}
+]
