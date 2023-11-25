@@ -29,23 +29,45 @@ class Book:
                 self.available = True
                 return True
             else:
-                print(f"The book '{self.title}' is not checked out.")
+                print(f"The series '{self.se}' is not checked out.")
                 return False
+            
+       
+       
+       
+       
+       
+       
+        # def loan_book(self, customer_id):
+        # temp = len(customer_id.loan_history)
+        #         if temp
+            
+            
+            
+            # if self.available:
+            #     self.available = False
+            #     loan_date = datetime.now()
+            #     due_date = loan_date + timedelta(days=self.max_loan_days)
+            #     self.loan_history.append({'borrower': customer_id, 'loan_date': loan_date, 'due_date': due_date})
+            #     print(f"Book '{self.title}' taken by {customer_id}. Due date: {due_date.strftime('%Y-%m-%d')}")
+            #     return True
+            # else:
+            #     print(f"The book '{self.title}' is not available for loan.")
+            #     return False
         
-        def take_book(self, borrower_name):
-            if self.available:
-                self.available = False
-                loan_date = datetime.now()
-                due_date = loan_date + timedelta(days=self.max_loan_days)
-                self.loan_history.append({'borrower': borrower_name, 'loan_date': loan_date, 'due_date': due_date})
-                print(f"Book '{self.title}' taken by {borrower_name}. Due date: {due_date.strftime('%Y-%m-%d')}")
-                return True
-            else:
-                print(f"The book '{self.title}' is not available for loan.")
-                return False
+        
+            
+            # if return_date <= due_date
 
 class Customers:
-    pass
+    def __init__(self, full_name, age, town):
+        self.full_name = full_name
+        self.age = age
+        self.town = town
+        self.loaned_books = []
+        self.ordered_books = []
+        self.customer_history = []
+        
 
 class Library:
     def __init__(self, name, adress):
@@ -79,26 +101,26 @@ class Library:
             json.dump(self.customers, customers, indent=2)
 
     def add_book(self, series, title, author, year):
-        self.books[series] = {'title': title, 'author': author, 'year': year, 'available': True}
+        self.books[series] = {'title': title, 'author': author, 'year': year, 'exist': True}
         print(f"Book with from the {series} added successfully!")
 
     def add_customer(self, customer_id, name, age, adress, email):
         self.customers[customer_id] = {'Name': name, 'Age': age, 'Adress': adress, "Email": email}
         print(f"Customer with ID {customer_id} added successfully!")
 
-    def check_if_avilable(self, series):
+    def check_if_exist(self, series):
         if series in self.books:
-            return self.books[series]['available']
+            return self.books[series]['exist']
         else:
             print(f'the book from series {series} was not found')
 
     def show_all_books(self):
         for series, book_info in self.books.items():
-            print(f"Series: {series}, Title: {book_info['title']}, Author: {book_info['author']}, Year: {book_info['year']}, Available: {book_info['available']}")
+            print(f"Series: {series}, Title: {book_info['title']}, Author: {book_info['author']}, Year: {book_info['year']}, Exist: {book_info['exist']}")
 
 
 
-
+   
 
 
 
@@ -152,19 +174,19 @@ class libraryUI:
 
 my_library = Library('my library', 'peer 78,haifa')
 my_library.add_book("Harry potter", "The chamber", 'J.k rolling', 2001)
-my_library.add_book(series='ABC123', title='Python Programming', author='John Doe', year=2022)
+my_library.add_book(series='Programing', title='Python Programming', author='John Doe', year=2022)
 
 
-# book_series_to_check = 'boris'
+book_series_to_check = 'ABC123'
 
-# if my_library.check_if_avilable(book_series_to_check):
-#     print('available')
-# else:
-#     print('not')
+if my_library.check_if_exist(book_series_to_check):
+    print('exist')
+else:
+    print('not')
 
-# my_library.save_book()
+my_library.save_book()
 
-# my_library.show_all_books()
+my_library.show_all_books()
 
 
 
