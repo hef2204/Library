@@ -186,90 +186,13 @@ my_library.add_book('ABC123', 'Python Programming','John Doe',2022)
 my_library.add_book('bye', 'Python Programming','John Doe',2022)
 my_library.add_customer(1, 'boris', 28, 'peer 78, haifa', 'bbb@com')
 my_library.add_customer(2, 'Seva', 28, 'peer 78, haifa', 'bbb@com')
+my_library.add_customer(3, 'Slava', 28, 'peer 78, haifa', 'bbb@com')
 my_library.save_customer()
 
 my_library.borrow_book(1, 'ABC123')
 my_library.borrow_book(1, 'Harry potter')
 my_library.return_book(1, 'Harry potter')
-my_library.borrow_book(2, 'bye')
-# my_library.return_book(1, 'Harry potter')
-# my_library.borrow_book(2, 'ABC123')
-# my_library.return_book(2, 'ABC123')
-# my_library.add_loan_history(2, 'seva', 28, 'peer 78, haifa', 'bbb@com', ['bbb'])
 my_library.save_loan_history()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# book_series_to_check = 'boris'
-
-# if my_library.check_if_avilable(book_series_to_check):
-#     print('available')
-# else:
-#     print('not')
-
-# my_library.save_book()
-
-# my_library.show_all_books()
-
-
-
-
-
-# my_library.save_book()
-# my_library.load_books()
-
-
-# my_library.save_customer()
-# my_library.load_customers()
-
-
-
-    
-
-
+my_library.borrow_book(2, 'bye')
+my_library.save_loan_history()
 
