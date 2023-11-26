@@ -1,6 +1,6 @@
 from datetime import timedelta, datetime
 import json
-from os import name
+import string
 
 class Book:
     class Book:
@@ -159,13 +159,14 @@ class Library:
    
 
     def borrow_book(self, customer_id, series):
+        customer_id = (customer_id)
         if series in self.books and self.books[series]['available']:
             self.books[series]['available'] = False
             print(f"Book from series {series} borrowed by customer {customer_id}")
-            if customer_id in self.loan_history:
-                self.loan_history[customer_id]['Books'].append(series)
+            if (customer_id) in self.loan_history:
+                self.loan_history [customer_id]['Books'].append(series)
             else:
-                self.add_loan_history(customer_id, name, 28, 'bbb', 'hh@ggg', [series])
+                self.add_loan_history (customer_id, self.customers[(customer_id)]['Name'], self.customers[customer_id]['Age'], self.customers[customer_id]['Address'], self.customers[customer_id]['Email'], [series])
         else:
             print(f"Book from series {series} is not available")
 
@@ -181,18 +182,21 @@ class Library:
 
 my_library = Library('my library', 'peer 78,haifa')
 my_library.add_book("Harry potter", "The chamber", 'J.k rolling', 2001)
-my_library.add_book('ABC123', 'Python Programming','John Doe', 2022)
+my_library.add_book('ABC123', 'Python Programming','John Doe',2022)
+my_library.add_book('bye', 'Python Programming','John Doe',2022)
 my_library.add_customer(1, 'boris', 28, 'peer 78, haifa', 'bbb@com')
 my_library.add_customer(2, 'Seva', 28, 'peer 78, haifa', 'bbb@com')
 my_library.save_customer()
 
+my_library.borrow_book(1, 'ABC123')
 my_library.borrow_book(1, 'Harry potter')
+my_library.return_book(1, 'Harry potter')
+my_library.borrow_book(2, 'bye')
 # my_library.return_book(1, 'Harry potter')
-my_library.borrow_book(2, 'ABC123')
-my_library.add_loan_history(2, 'seva', 28, 'peer 78, haifa', 'bbb@com', ['Harry potter'])
+# my_library.borrow_book(2, 'ABC123')
+# my_library.return_book(2, 'ABC123')
+# my_library.add_loan_history(2, 'seva', 28, 'peer 78, haifa', 'bbb@com', ['bbb'])
 my_library.save_loan_history()
-my_library.load_loan_history()
-my_library.show_all_customers()
 
 
 
