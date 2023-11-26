@@ -88,8 +88,11 @@ class Library:
             pass
 
     def save_book(self):
-        with open('Books.json', 'w') as books:
-            json.dump(self.books, books, indent=2 )
+        try:
+            with open('Books.json', 'w') as books:
+                json.dump(self.books, books, indent=2 )
+        except FileNotFoundError:
+            pass
 
     def save_customer(self):
         with open('customers.json', 'w') as customers:
@@ -119,10 +122,13 @@ class Library:
 
     
 
-    def return_book(self, series, customer_id):
+    def return_book(self, customer_id, series):
         if series in self.books:
             if not self.books[series]['available']:
                 self.books[series]['available'] = True
+
+                if customer_id in self.loan_history:
+                    self.loan_history[customer_id]['Books'].remove(series)
                 print(f"Book from series {series} returned by customer {customer_id}")
             else:
                 print(f"Book from series {series} is not taken")
@@ -159,7 +165,7 @@ class Library:
             if customer_id in self.loan_history:
                 self.loan_history[customer_id]['Books'].append(series)
             else:
-                self.add_loan_history(customer_id, 'Name', 'Age', 'Address', 'Email', [series])
+                self.add_loan_history(customer_id, name, 28, 'bbb', 'hh@ggg', [series])
         else:
             print(f"Book from series {series} is not available")
 
@@ -175,80 +181,18 @@ class Library:
 
 my_library = Library('my library', 'peer 78,haifa')
 my_library.add_book("Harry potter", "The chamber", 'J.k rolling', 2001)
-my_library.add_book(series='ABC123', title='Python Programming', author='John Doe', year=2022)
+my_library.add_book('ABC123', 'Python Programming','John Doe', 2022)
 my_library.add_customer(1, 'boris', 28, 'peer 78, haifa', 'bbb@com')
 my_library.add_customer(2, 'Seva', 28, 'peer 78, haifa', 'bbb@com')
 my_library.save_customer()
-# print(my_library.books)
 
-my_library.borrow_book(1 , 'ABC123')
-my_library.borrow_book(2 , 'Harry potter')
-# my_library.show_all_books()
-
-# my_library.borrow_book('Harry potter', 1)
+my_library.borrow_book(1, 'Harry potter')
+# my_library.return_book(1, 'Harry potter')
+my_library.borrow_book(2, 'ABC123')
+my_library.add_loan_history(2, 'seva', 28, 'peer 78, haifa', 'bbb@com', ['Harry potter'])
 my_library.save_loan_history()
-
-# my_library.show_all_books()
-# my_library.return_book('ABC123', 1)
-# my_library.show_all_books()
-# my_library.show_book_info('harry potter')
-
-
-
-
-
-
-
-
-
-# class libraryUI:
-#     def __init__(self):
-#         pass
-
-#     def main_menu(self):
-#         print("Welcome to the Library!")
-
-#         while True:
-#             print("Please select an option:")
-#             print("1. Show all books")
-#             print("2. Show all customers")
-#             print("3. Add a book")
-#             print("4. Add a customer")
-#             print("5. Take a book")
-#             print("6. Return a book")
-#             print("7. Show book info")
-#             print("8. Exit")
-#             option = input("Enter your choice: ")
-
-#             if option == '1':
-#                 self.show_all_books()
-#             elif option == '2':
-#                 self.show_all_customers()
-#             elif option == '3':
-#                 self.add_book()
-#             elif option == '4':
-#                 self.add_customer()
-#             elif option == '5':
-#                 self.take_book()
-#             elif option == '6':
-#                 self.return_book()
-#             elif option == '7':
-#                 self.show_book_info()
-#             elif option == '8':
-#                 print("Goodbye!")
-#                 break
-#             else:
-#                 print("Invalid option, please try again")
-
-
-# if __name__ == '__main__':
-#     library = Library('My Library', '123 Main St')
-#     library.load_books()
-#     library.load_customers()
-#     libraryUI = libraryUI()
-#     libraryUI.main_menu()
-#     library.save_book()
-#     library.save_customer()
+my_library.load_loan_history()
+my_library.show_all_customers()
 
 
 

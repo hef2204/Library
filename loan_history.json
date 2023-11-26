@@ -1,18 +1,18 @@
 {
   "1": {
-    "Name": "Name",
-    "Age": "Age",
-    "Address": "Address",
-    "Email": "Email",
+    "Name": "nt",
+    "Age": 28,
+    "Address": "bbb",
+    "Email": "hh@ggg",
     "Books": [
-      "ABC123"
+      "Harry potter"
     ]
   },
   "2": {
-    "Name": "Name",
-    "Age": "Age",
-    "Address": "Address",
-    "Email": "Email",
+    "Name": "seva",
+    "Age": 28,
+    "Address": "peer 78, haifa",
+    "Email": "bbb@com",
     "Books": [
       "Harry potter"
     ]
