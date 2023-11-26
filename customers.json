@@ -2,7 +2,13 @@
   "1": {
     "Name": "boris",
     "Age": 28,
-    "Adress": "peer 78, haifa",
+    "Address": "peer 78, haifa",
+    "Email": "bbb@com"
+  },
+  "2": {
+    "Name": "Seva",
+    "Age": 28,
+    "Address": "peer 78, haifa",
     "Email": "bbb@com"
   }
 }
