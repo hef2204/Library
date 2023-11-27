@@ -3,12 +3,24 @@
     "title": "The chamber",
     "author": "J.k rolling",
     "year": 2001,
-    "exist": true
+    "available": true
   },
-  "Programing": {
+  "ABC123": {
     "title": "Python Programming",
     "author": "John Doe",
     "year": 2022,
-    "exist": true
+    "available": true
+  },
+  "bye": {
+    "title": "Python Programming",
+    "author": "John Doe",
+    "year": 2022,
+    "available": true
+  },
+  "C#": {
+    "title": "Python Programming",
+    "author": "John Doe",
+    "year": 2022,
+    "available": true
   }
 }

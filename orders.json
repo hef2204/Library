@@ -1,0 +1,28 @@
+{
+  "1": [
+    {
+      "Series": "XYZ456",
+      "Title": "Test Title",
+      "Author": "Test Author",
+      "Year": 2022
+    },
+    {
+      "Series": "C#",
+      "Title": "Python Programming",
+      "Author": "John Doe",
+      "Year": 2025
+    },
+    {
+      "Series": "Harry potter",
+      "Title": "The chamber",
+      "Author": "J.k rolling",
+      "Year": 2005
+    },
+    {
+      "Series": "Harry potterhhhhhh",
+      "Title": "The kaka",
+      "Author": "J.kaka rolling",
+      "Year": 2001
+    }
+  ]
+}
