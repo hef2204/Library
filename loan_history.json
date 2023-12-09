@@ -5,21 +5,16 @@
         "Address": "peer 78, Haifa",
         "Email": "bbb@com",
         "Books": {
-            "bye": {
-                "Borrowed At": "2023-12-02 16:45:22.568134",
-                "Status": "Borrowed"
-            }
-        }
-    },
-    "1": {
-        "Name": "boris",
-        "Age": 28,
-        "Address": "peer 78, Haifa",
-        "Email": "bbb@com",
-        "Books": {
-            "C#": {
-                "Borrowed At": "2023-12-02 16:47:24.312742",
-                "Status": "Borrowed"
+            "43": {
+                "title": "The chamber",
+                "borrowed_at": "2023-12-08 10:02:06",
+                "due_date": "Returned"
+            },
+            "1": {
+                "title": "The return of the king",
+                "borrowed_at": "2023-12-08 12:56:14",
+                "returned_at": "2023-12-08 12:56:14",
+                "state": "Returned"
             }
         }
     }

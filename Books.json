@@ -1,32 +1,49 @@
 {
-  "Harry potter": {
+  "1": {
+    "type": "Fiction",
+    "series": "Harry potter",
+    "title": "The Deathly Hallows",
+    "author": "J.K. Rowling",
+    "year": "2007",
+    "available": true,
+    "max_loan_time": 10
+  },
+  "2": {
+    "type": "Drama",
+    "series": "kings",
+    "title": "Charles the King",
+    "author": "Evelyn Anthony",
+    "year": "2016",
+    "available": true,
+    "max_loan_time": 5,
+    "due_date": "2023-12-13"
+  },
+  "3": {
+    "type": "Fiction",
+    "series": "Harry potter",
     "title": "The chamber",
-    "author": "J.k rolling",
-    "year": 2001,
-    "available": true
+    "author": "J.K. Rowling",
+    "year": "2000",
+    "available": true,
+    "max_loan_time": 10,
+    "due_date": "2023-12-18"
   },
-  "ABC123": {
-    "title": "Python Programming",
-    "author": "John Doe",
-    "year": 2022,
-    "available": true
+  "4": {
+    "type": "Fantasy",
+    "series": "Lord of the rings",
+    "title": "The return of the king",
+    "author": "J. R. R. Tolkien",
+    "year": "2009",
+    "available": true,
+    "max_loan_time": 2
   },
-  "bye": {
-    "title": "Python Programming",
-    "author": "John Doe",
-    "year": 2022,
-    "available": false
-  },
-  "C#": {
-    "title": "Python Programming",
-    "author": "John Doe",
-    "year": 2022,
-    "available": false
-  },
-  "ABCdef123": {
-    "title": "Python Programming",
-    "author": "John Doe",
-    "year": 2022,
-    "available": true
+  "5": {
+    "type": "Fantasy",
+    "series": "Lord of the rings",
+    "title": "Two towers",
+    "author": "J. R. R. Tolkien",
+    "year": "2007",
+    "available": true,
+    "max_loan_time": 2
   }
 }
