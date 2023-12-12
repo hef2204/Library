@@ -199,13 +199,11 @@ class Library:
             print(f"Customer with ID {customer_id} was not found")
 
     def find_customer_by_name(self, customer_name):
+        customer_name = customer_name.lower()
         for customer_id, customer_info in self.customers.items():
-            if customer_info['Name'] == customer_name:
-                print(f"Customer '{customer_name}' found:")
-                for key, value in customer_info.items():
-                    print(f"{key}: {value}")
-                return
-        print(f"Customer '{customer_name}' was not found")
+            if customer_info['Name'].lower() == customer_name:
+                return customer_info
+        return None
 
 
 
@@ -332,79 +330,6 @@ class Library:
                     return
             print("Book not borrowed or not found")
 
-    
-    def load_orders(self):
-        try:
-            with open('orders.json', 'r') as orders:
-                self.orders = json.load(orders)
-        except FileNotFoundError:
-            pass
-
-    def save_orders(self):
-        try:
-            with open('orders.json', 'w') as orders:
-                json.dump(self.orders, orders, indent=2)
-        except FileNotFoundError:
-            pass
-    
-    
-    def order_book(self, customer_id, series, title, author, year):
-        if customer_id not in self.orders:
-            self.orders[customer_id] = {'Books': []}
-        if len(self.orders[customer_id]['Books']) < 2:
-            if series not in self.books or not self.books[series]['available'] or not self.books[series]['year'] == year:
-                book_details = {
-                    'Series': series,
-                    'Title': title,
-                    'Author': author,
-                    'Year': year
-                }
-                self.orders[customer_id]['Books'].append(book_details.copy())
-                self.save_orders()
-                print(f"Customer {customer_id} ordered book from series {series}")
-            else:
-                print(f"Book from series {series} is already available")
-        else:
-            print(f"Customer {customer_id} has already ordered 2 books")
-
-    def show_all_orders(self):
-        for customer_id, order_info in self.orders.items():
-            print(f"ID: {customer_id}, Books: {order_info['Books']}")
-
-    def show_order_info(self, customer_id):
-        if customer_id in self.orders:
-            print(f"ID: {customer_id}, Books: {self.orders[customer_id]['Books']}")
-        else:
-            print(f"Customer {customer_id} did not order any books")
-
-    def cancel_order(self, customer_id, series):
-        if customer_id in self.orders:
-            for book in self.orders[customer_id]['Books']:
-                if book['Series'] == series:
-                    self.orders[customer_id]['Books'].remove(book)
-                    self.save_orders()
-                    print(f"Customer {customer_id} canceled order for book from series {series}")
-                    return
-            print(f"Customer {customer_id} did not order book from series {series}")
-        else:
-            print(f"Customer {customer_id} did not order any books")
-
-    def load_order_history(self):
-        try:
-            with open('order_history.json', 'r') as order_history_file:
-                self.order_history = json.load(order_history_file)
-        except FileNotFoundError:
-            pass
-
-    def return_all_the_books_of_the_library(self):
-        for book_id, book_info in self.books.items():
-            if not book_info['available']:
-                book_info['available'] = True
-                self.add_loan_history(book_id, 'Returned')
-                self.save_book()
-                print(f"Book with ID {book_id} returned successfully!")
-            else:
-                print("Book not borrowed or not found")
 
     def return_all_the_customer_books(self, customer_id):
         if customer_id not in self.loan_history:

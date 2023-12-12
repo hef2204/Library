@@ -5,7 +5,7 @@
     "title": "The Philosopher's Stone",
     "author": "J.K. Rowling",
     "year": "1997",
-    "available": true,
+    "available": false,
     "max_loan_time": 10,
     "due_date": "2023-12-22"
   },
