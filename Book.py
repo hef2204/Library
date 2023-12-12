@@ -19,9 +19,6 @@ class Book:
             return f"Book: {self.title} by {self.author} ({self.year})"
         
 
-        
-
-
         def take(self):
             if self.available:
                 self.available = False

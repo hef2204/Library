@@ -1,6 +1,8 @@
 from datetime import timedelta, datetime
 import json
 import string
+import Book
+import Customer
 
 
 class Library:
@@ -12,6 +14,12 @@ class Library:
         self.loan_history = {}
         self.orders = {}
         self.book_id_counter = 1
+        try:
+            with open('book_id_counter.json', 'r') as f:
+                self.book_id_counter = json.load(f)
+        except FileNotFoundError:
+            self.book_id_counter = 1
+
         with open('loan_history.json', 'r') as loan_history_file:
             self.loan_history = json.load(loan_history_file)
         try:
@@ -95,6 +103,9 @@ class Library:
         self.save_book()
         print(f"Book with ID {book_id} from the {series} added successfully!")
         self.book_id_counter += 1
+        with open('book_id_counter.json', 'w') as f:
+            json.dump(self.book_id_counter, f)
+        
 
     def remove_book(self, book_id):
         if book_id in self.books:
@@ -109,7 +120,7 @@ class Library:
         for series, book_info, book_id in self.books.items():
             print(f"Id: {book_id}, Series: {series}, Title: {book_info['title']}, Author: {book_info['author']}, Year: {book_info['year']}, Available: {book_info['available']}")
 
-    
+
     def display_late_borrowed_books(self):
         for book_id, book_info in self.books.items():
             if not book_info['available']:
@@ -246,7 +257,8 @@ class Library:
         with open('loan_history.json', 'w') as loan_history_file:
             json.dump(self.loan_history, loan_history_file, indent=4)
 
-    def add_loan_history(self, customer_id, book_id, due_date):
+  
+    def add_loan_history(self, customer_id, book_id, state):
         if customer_id not in self.loan_history:
             self.loan_history[customer_id] = {
                 'Name': self.customers[customer_id]['Name'],
@@ -257,20 +269,35 @@ class Library:
             }
         elif 'Books' not in self.loan_history[customer_id]:
             self.loan_history[customer_id]['Books'] = {}
-        self.loan_history[customer_id]['Books'][book_id] = {
-            'title': self.books[book_id]['title'],
-            'borrowed_at': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            'returned_at': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            'state': due_date
-    }
 
-   
+        if book_id not in self.loan_history[customer_id]['Books']:
+            self.loan_history[customer_id]['Books'][book_id] = {
+                'title': self.books[book_id]['title'],
+                'borrowed_at': '',
+                'returned_at': '',
+                'state': ''
+            }
+
+        if state == 'Borrowed':
+            self.loan_history[customer_id]['Books'][book_id]['borrowed_at'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        elif state == 'Returned':
+            self.loan_history[customer_id]['Books'][book_id]['returned_at'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        self.loan_history[customer_id]['Books'][book_id]['state'] = state
+
+
+
 
     def borrow_book(self, customer_id, book_id):
         book = self.books.get(book_id)
-        if customer_id in self.loan_history and len(self.loan_history[customer_id]['Books']) >= 2:
-            print(f"Customer with ID {customer_id} has already borrowed 2 books.")
+        if customer_id not in self.customers:
+            print(f"Customer with ID {customer_id} does not exist.")
             return
+        if customer_id in self.loan_history:
+            borrowed_books = [book for book in self.loan_history[customer_id]['Books'].values() if book['state'] == 'Borrowed']
+            if len(borrowed_books) >= 2:
+                print(f"Customer with ID {customer_id} has already borrowed 2 books. you should return one of them first.")
+                return
         if not book:
             print(f"Book with ID {book_id} does not exist.")
             return
@@ -281,8 +308,8 @@ class Library:
         due_date = datetime.now() + timedelta(days=book['max_loan_time'])
         book['due_date'] = due_date.strftime("%Y-%m-%d")
         self.books[book_id] = book
-        self.add_loan_history(customer_id, book_id, book['due_date']) 
-        print(f"Book with ID {book_id} has been borrowed. It is due on {book['due_date']}.")
+        self.add_loan_history(customer_id, book_id, 'Borrowed') 
+        print(f"Book with ID {book_id} has been borrowed. It is due on {book['due_date']}. You have {book['max_loan_time']} days to return it.")
 
     def return_book(self, customer_id, book_identifier, by_id=True):
         if by_id:
@@ -369,8 +396,31 @@ class Library:
         except FileNotFoundError:
             pass
 
+    def return_all_the_books_of_the_library(self):
+        for book_id, book_info in self.books.items():
+            if not book_info['available']:
+                book_info['available'] = True
+                self.add_loan_history(book_id, 'Returned')
+                self.save_book()
+                print(f"Book with ID {book_id} returned successfully!")
+            else:
+                print("Book not borrowed or not found")
 
+    def return_all_the_customer_books(self, customer_id):
+        if customer_id not in self.loan_history:
+            print(f"Customer with ID {customer_id} has not borrowed any books.")
+            return
 
+        borrowed_books = {book_id: book_info for book_id, book_info in self.loan_history[customer_id]['Books'].items() if book_info['state'] == 'Borrowed'}
+
+        for book_id, book_info in borrowed_books.items():
+            self.books[book_id]['available'] = True
+            self.loan_history[customer_id]['Books'][book_id]['state'] = 'Returned'
+            self.loan_history[customer_id]['Books'][book_id]['returned_at'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            self.save_book()
+            self.save_loan_history() 
+            print(f"Book with ID {book_id} returned successfully!")
+    
     def main_menu(self):
         while True:
             print("""
@@ -453,6 +503,10 @@ class Library:
             elif choice == '13':
                 print('Thank you for using the Library!')
                 break
+            elif choice == '14':
+                customer_id = str(input("Enter customer's ID: "))
+                self.return_all_the_customer_books(customer_id)
+
             else:
                 print('Invalid choice. Please try again.')
                 

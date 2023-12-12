@@ -1,12 +1,13 @@
 {
   "1": {
     "type": "Fiction",
-    "series": "Harry potter",
-    "title": "The Deathly Hallows",
+    "series": "Harry Potter",
+    "title": "The Philosopher's Stone",
     "author": "J.K. Rowling",
-    "year": "2007",
+    "year": "1997",
     "available": true,
-    "max_loan_time": 10
+    "max_loan_time": 10,
+    "due_date": "2023-12-22"
   },
   "2": {
     "type": "Drama",
@@ -16,7 +17,7 @@
     "year": "2016",
     "available": true,
     "max_loan_time": 5,
-    "due_date": "2023-12-13"
+    "due_date": "2023-12-17"
   },
   "3": {
     "type": "Fiction",
@@ -26,7 +27,7 @@
     "year": "2000",
     "available": true,
     "max_loan_time": 10,
-    "due_date": "2023-12-18"
+    "due_date": "2023-12-22"
   },
   "4": {
     "type": "Fantasy",
@@ -35,7 +36,8 @@
     "author": "J. R. R. Tolkien",
     "year": "2009",
     "available": true,
-    "max_loan_time": 2
+    "max_loan_time": 2,
+    "due_date": "2023-12-14"
   },
   "5": {
     "type": "Fantasy",
@@ -44,6 +46,88 @@
     "author": "J. R. R. Tolkien",
     "year": "2007",
     "available": true,
-    "max_loan_time": 2
+    "max_loan_time": 2,
+    "due_date": "2023-12-14"
+  },
+  "6": {
+    "type": "Drama",
+    "series": "hhhh",
+    "title": "hhhh",
+    "author": "hhh",
+    "year": "1111",
+    "available": true,
+    "max_loan_time": 5
+  },
+  "7": {
+    "type": "Fiction",
+    "series": "Harry Potter",
+    "title": "The Philosopher's Stone",
+    "author": "J.K. Rowling",
+    "year": "1997",
+    "available": true,
+    "max_loan_time": 10
+  },
+  "8": {
+    "type": "Fiction",
+    "series": "Harry Potter",
+    "title": "The Philosopher's Stone",
+    "author": "J.K. Rowling",
+    "year": "1997",
+    "available": true,
+    "max_loan_time": 10
+  },
+  "9": {
+    "type": "Fiction",
+    "series": "Harry Potter",
+    "title": "The Philosopher's Stone",
+    "author": "J.K. Rowling",
+    "year": "1997",
+    "available": true,
+    "max_loan_time": 10
+  },
+  "10": {
+    "type": "Fiction",
+    "series": "Harry Potter",
+    "title": "The Philosopher's Stone",
+    "author": "J.K. Rowling",
+    "year": "1997",
+    "available": true,
+    "max_loan_time": 10
+  },
+  "11": {
+    "type": "Drama",
+    "series": "gggg",
+    "title": "ggg",
+    "author": "ggg",
+    "year": "1111",
+    "available": true,
+    "max_loan_time": 5
+  },
+  "12": {
+    "type": "Drama",
+    "series": "hhh",
+    "title": "hhh",
+    "author": "hhh",
+    "year": "3333",
+    "available": true,
+    "max_loan_time": 5
+  },
+  "13": {
+    "type": "Drama",
+    "series": "gggg",
+    "title": "gggg",
+    "author": "ggg",
+    "year": "22222",
+    "available": true,
+    "max_loan_time": 5
+  },
+  "14": {
+    "type": "Drama",
+    "series": "hhhhhhhhhhh",
+    "title": "hhhhhhhhhh",
+    "author": "hhhhhhh",
+    "year": "3333",
+    "available": true,
+    "max_loan_time": 5
   }
 }
