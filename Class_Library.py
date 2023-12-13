@@ -52,7 +52,7 @@ class Library:
         self.load_books()
         self.load_customers()
         self.load_loan_history()
-        self.load_order_history()
+        
 
     def load_loan_history(self):
         try:
@@ -363,8 +363,8 @@ class Library:
             '3. Loan a book', '      10. Find customer by name',
             '4. Return a book', '      11. Remove book',
             '5. Display all books', '      12. Remove customer',
-            '6. Display all customers', '  13. Exit',
-            '7. Display all loans', ''
+            '6. Display all customers', '  13. return all the customer books',
+            '7. Display all loans',       '14. Exit '''
         ))
 
 
