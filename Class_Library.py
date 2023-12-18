@@ -364,8 +364,8 @@ class Library:
             '3. Loan a book', '      10. Find customer by name',
             '4. Return a book', '      11. Remove book',
             '5. Display all books', '      12. Remove customer',
-            '6. Display all customers', '  13. Exit',
-            '7. Display all loans', ''
+            '6. Display all customers', '  13. Return all the customer books',
+            '7. Display all loans', '      14. Exit '
         ))
 
 
@@ -427,12 +427,12 @@ class Library:
                 customer_id = str(input("Enter customer's ID: "))
                 self.remove_customer(customer_id)
             elif choice == '13':
-                print('Thank you for using the Library!')
-                break
-            elif choice == '14':
                 customer_id = str(input("Enter customer's ID: "))
                 self.return_all_the_customer_books(customer_id)
-
+            elif choice == '14':
+                print('Thank you for using the Library!')
+                break
+            
             else:
                 print('Invalid choice. Please try again.')
                 
