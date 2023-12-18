@@ -100,8 +100,9 @@
     "title": "ggg",
     "author": "ggg",
     "year": "1111",
-    "available": true,
-    "max_loan_time": 5
+    "available": false,
+    "max_loan_time": 5,
+    "due_date": "2023-12-18"
   },
   "12": {
     "type": "Drama",
