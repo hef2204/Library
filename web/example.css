@@ -1,0 +1,24 @@
+body {
+    font-family: Arial;
+    background: white;
+}
+
+button {
+    background-color:aqua;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 8px 14px;
+    cursor: pointer;
+}
+
+
+input[type="text"] {
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid white;
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0);
+
+}
+

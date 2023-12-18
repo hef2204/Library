@@ -3,6 +3,7 @@ import json
 import string
 import Book
 import Customer
+import sqlite3
 
 
 class Library:
@@ -346,98 +347,120 @@ class Library:
             self.save_loan_history() 
             print(f"Book with ID {book_id} returned successfully!")
     
-    def main_menu(self):
-        while True:
-            print("""
-        Welcome to the Library!
-        {:<20} {:<20}
-        {:<20} {:<20}
-        {:<20} {:<20}
-        {:<20} {:<20}
-        {:<20} {:<20}
-        {:<20} {:<20}
-        {:<20} {:<20}
-        """.format(
-            '1. Add a new customer', '     8. Display late loans',
-            '2. Add a new book', '      9. Find book by name',
-            '3. Loan a book', '      10. Find customer by name',
-            '4. Return a book', '      11. Remove book',
-            '5. Display all books', '      12. Remove customer',
-            '6. Display all customers', '  13. Exit',
-            '7. Display all loans', ''
-        ))
+#     def main_menu(self):
+#         while True:
+#             print("""
+#         Welcome to the Library!
+#         {:<20} {:<20}
+#         {:<20} {:<20}
+#         {:<20} {:<20}
+#         {:<20} {:<20}
+#         {:<20} {:<20}
+#         {:<20} {:<20}
+#         {:<20} {:<20}
+#         """.format(
+#             '1. Add a new customer', '     8. Display late loans',
+#             '2. Add a new book', '      9. Find book by name',
+#             '3. Loan a book', '      10. Find customer by name',
+#             '4. Return a book', '      11. Remove book',
+#             '5. Display all books', '      12. Remove customer',
+#             '6. Display all customers', '  13. Exit',
+#             '7. Display all loans', ''
+#         ))
 
 
-            choice = input('Enter your choice: ')
-            if choice == '1':
-                name = input("Enter customer's name: ")
-                age = input("Enter customer's age: ")
-                address = input("Enter customer's address: ")
-                email = input("Enter customer's email: ")
-                self.add_new_customer(name, age, address, email)
-                self.save_customer()
+#             choice = input('Enter your choice: ')
+#             if choice == '1':
+#                 name = input("Enter customer's name: ")
+#                 age = input("Enter customer's age: ")
+#                 address = input("Enter customer's address: ")
+#                 email = input("Enter customer's email: ")
+#                 self.add_new_customer(name, age, address, email)
+#                 self.save_customer()
                 
 
                 
-            elif choice == '2':
-                book_type = input("Enter book's type: ")
-                series = input("Enter book's series: ")
-                title = input("Enter book's title: ")
-                author = input("Enter book's author: ")
-                year = input("Enter book's year: ")
-                self.add_book(book_type, series, title, author, year)
-                self.save_book()
+#             elif choice == '2':
+#                 book_type = input("Enter book's type: ")
+#                 series = input("Enter book's series: ")
+#                 title = input("Enter book's title: ")
+#                 author = input("Enter book's author: ")
+#                 year = input("Enter book's year: ")
+#                 self.add_book(book_type, series, title, author, year)
+#                 self.save_book()
             
-            elif choice == '3':
-                customer_id = input('Enter the customer ID: ')
-                book_id = input('Enter the book ID: ')
-                self.borrow_book(customer_id, book_id)
-                self.save_book()    
-                self.save_customer()
-                self.save_loan_history()
+#             elif choice == '3':
+#                 customer_id = input('Enter the customer ID: ')
+#                 book_id = input('Enter the book ID: ')
+#                 self.borrow_book(customer_id, book_id)
+#                 self.save_book()    
+#                 self.save_customer()
+#                 self.save_loan_history()
 
 
-            elif choice == '4':
-                customer_id = input('Enter the customer ID: ')
-                book_id = input('Enter the book ID: ')
-                self.return_book(customer_id, book_id)
-                self.save_book()
-                self.save_customer()
-                self.save_loan_history()
+#             elif choice == '4':
+#                 customer_id = input('Enter the customer ID: ')
+#                 book_id = input('Enter the book ID: ')
+#                 self.return_book(customer_id, book_id)
+#                 self.save_book()
+#                 self.save_customer()
+#                 self.save_loan_history()
                 
-            elif choice == '5':
-                self.display_all_books()
-            elif choice == '6':
-                self.display_all_customers()
-            elif choice == '7':
-                self.display_all_borrowed_books()
-            elif choice == '8':
-                self.display_late_borrowed_books()
-            elif choice == '9':
-                book_name = input("Enter book's title: ")
-                self.find_book_by_name(book_name)
-            elif choice == '10':
-                customer_name = input("Enter customer's name: ")
-                self.find_customer_by_name(customer_name)
-            elif choice == '11':
-                book_id = str(input("Enter book's ID: "))
-                self.remove_book(book_id)
-            elif choice == '12':
-                customer_id = str(input("Enter customer's ID: "))
-                self.remove_customer(customer_id)
-            elif choice == '13':
-                print('Thank you for using the Library!')
-                break
-            elif choice == '14':
-                customer_id = str(input("Enter customer's ID: "))
-                self.return_all_the_customer_books(customer_id)
+#             elif choice == '5':
+#                 self.display_all_books()
+#             elif choice == '6':
+#                 self.display_all_customers()
+#             elif choice == '7':
+#                 self.display_all_borrowed_books()
+#             elif choice == '8':
+#                 self.display_late_borrowed_books()
+#             elif choice == '9':
+#                 book_name = input("Enter book's title: ")
+#                 self.find_book_by_name(book_name)
+#             elif choice == '10':
+#                 customer_name = input("Enter customer's name: ")
+#                 self.find_customer_by_name(customer_name)
+#             elif choice == '11':
+#                 book_id = str(input("Enter book's ID: "))
+#                 self.remove_book(book_id)
+#             elif choice == '12':
+#                 customer_id = str(input("Enter customer's ID: "))
+#                 self.remove_customer(customer_id)
+#             elif choice == '13':
+#                 print('Thank you for using the Library!')
+#                 break
+#             elif choice == '14':
+#                 customer_id = str(input("Enter customer's ID: "))
+#                 self.return_all_the_customer_books(customer_id)
 
-            else:
-                print('Invalid choice. Please try again.')
+#             else:
+#                 print('Invalid choice. Please try again.')
                 
 
-if __name__ == "__main__":
-    ui = Library("My Library", "123 Main Street")
-    ui.main_menu()
+# if __name__ == "__main__":
+#     ui = Library("My Library", "123 Main Street")
+#     ui.main_menu()
 
-    
+def add_book_to_db(ID, Type, series, Title, author, year, Available):
+    # Connect to the SQLite database
+    conn = sqlite3.connect('data.db')
+
+    # Create a cursor object
+    c = conn.cursor()
+
+    # SQL command to insert a book into the 'books' table
+    sql = '''INSERT INTO Books(ID, Type, series, Title, author, year, Available)
+             VALUES(?,?,?,?,?,?,?)'''
+
+    # Execute the SQL command
+    c.execute(sql, (ID, Type, series, Title, author, year, Available))
+
+    # Commit the changes and close the connection
+    conn.commit()
+    conn.close()
+
+
+add_book_to_db(1, 'Fiction', 'Harry Potter', 'Harry Potter and the Philosopher\'s Stone', 'J. K. Rowling', 1997, 'Yes')
+
+
+def add_customer_to_db(ID, Name, Year):
