@@ -206,7 +206,7 @@ def display_all_books():
     conn.commit()
     conn.close()
 
-display_all_books()
+loan_a_book(2, 1)
     
 
 
